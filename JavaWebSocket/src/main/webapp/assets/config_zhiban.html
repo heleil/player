@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <title v-text="config_title"></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!--include head-->
+    <!--include header base-->
+<meta name="author" content="Roobo:F2E">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+
+<!--<link rel="icon" type="image/png" href="img/favicon/favicon.png">-->
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<!--<link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">-->
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!--<link rel="apple-touch-icon-precomposed" href="img/favicon/favicon-57x57.png">-->
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage" content="favicon.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<link rel="shortcut icon" type="image/png" href="favicon.png" />
+
+<link rel="stylesheet" href="static/css/weui-69ad285e9a.min.css">
+<link rel="stylesheet" href="static/css/jquery-weui-5e89bf3730.css">
+<link rel="stylesheet" href="static/css/app-1473dc65e0.css">
+<script src="static/js/components/pxtorem-3d539b11f0.js"></script>
+
+<!--<script type='text/javascript' src='static/js/lib/1.11.3/jquery-932bd01aeb.js' charset='utf-8'></script>-->
+<!--<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<script src="static/jquery/1.11.3/jquery.js"></script>
+
+<script type='text/javascript' src='static/js/config/juli_config-2d75da1cdf.js' charset='utf-8'></script>
+<style>[v-cloak] {display: none!important}</style>
+
+<script src="static/js/modules/getopenid-8117005817.js"></script>
+<script type='text/javascript' src='static/js/util/utils-0f3cb76d6c.js' charset='utf-8'></script>
+
+</head>
+
+<body id="uc" class="uc-center">
+
+    <!--wrap-->
+    <div id="wrap">
+        <section class="uc-list uc-setting">
+            <ul>
+                <li>
+                    <a class="link-icon clearfix" href="family.html">
+                        <span class="rb-left">
+                        <i class="user-icon"></i>
+                        家庭成员
+                    </span>
+                        <b class="rb-right" v-text="totalmembers"></b>
+                    </a>
+                </li>
+                <li class="li-control">
+                    <a class="clearfix">
+                        <span class="rb-left">
+                        <i class="eletric-set-icon"></i>
+                        电池状态
+                    </span>
+                        <b class="ab-right" v-text="electri"></b>
+                    </a>
+                </li>
+                <li class="li-control" v-on:click.stop.prevent="onListenBabylock('#babylock')">
+                    <a class="clearfix">
+                        <span class="rb-left">
+                        <i class="babyclock-set-icon"></i>
+                        儿童锁
+                    </span>
+                        <span class="ab-right-2" v-text="babylock_title"></span>
+                        <b class="ab-right switch round">
+                            <input id="mySwitch3" type="checkbox" v-model="babylock" >
+                            <label for="mySwitch3"></label>
+                        </b>
+                    </a>
+                </li>
+                <li class="li-control" v-on:click="toCloseMechCou('#volumesetting')">
+                    <a class="link-icon clearfix">
+                        <span class="rb-left">
+                        <i class="audio-set-icon"></i>
+                        音量设置
+                    </span>
+                        <b class="rb-right" v-text="getAudio"></b>
+                    </a>
+                </li>
+                <li class="li-control" v-on:click.stop.prevent="onListenLight">
+                    <a class="clearfix">
+                        <span class="rb-left">
+                        <i class="light-set-icon"></i>
+                        灯光控制
+                    </span>
+                        <span class="ab-right-2" v-text="light_title"></span>
+                        <b class="ab-right switch round">
+                            <input id="mySwitch4" type="checkbox" v-model="light" > 
+                            <label for="mySwitch4"></label>
+                        </b>
+                    </a>
+                </li>
+                <li onclick="showPicker();">
+                    <a class="link-icon clearfix">
+                        <span class="rb-left">
+                        <i class="alerm-set-icon"></i>
+                        定时关机
+                    </span>
+                        <b class="rb-right" v-text="shutdown"></b>
+                    </a>
+                </li>
+                <li>
+                    <a class="link-icon clearfix" href="device.html">
+                        <span clas="rb-left">
+                        <i class="aboutroobo-set-icon"></i>
+                        <span v-text="name"></span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+    </div>
+
+    <!--定时关机弹出层 未使用-->
+    <div class="clock" id="closeMech" style="display: none;">
+        <div>
+            <p>取消定时</p>
+            <p>10分钟</p>
+            <p>20分钟</p>
+            <p>30分钟</p>
+            <p>60分钟</p>
+            <p>90分钟</p>
+            <p>120分钟</p>
+        </div>
+    </div>
+
+    <!--儿童锁弹出层-->
+    <div class="childlock" style="display: none;" id="babylock">
+        <div class="lockshow">
+            <p>提示信息</p>
+            <p>开启童锁后，机器人上的按键功能将失效。</p>
+            <p>您确定要这么做吗？</p>
+            <div>
+                <div><button type="button" style="margin-left: 0rem" v-on:click.stop.prevent="toConfirmBabylock('#babylock')">确定</button></div>
+                <div><button type="button" style="margin-left: .21rem" v-on:click.stop.prevent="toCanvelBabylock('#babylock')">取消</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!--音量设置出层-->
+    <div class="volumesetting" id="volumesetting" style="display: none;">
+        <div class="volumeshow">
+            <p>音量设置</p>
+            <div style="margin-left: 17%; width: 66%;">
+                <div class="weui-slider-box">
+                    <img src="static/img/icon/audio-set-icon.png">
+                    <div class="weui-slider">
+                        <div id="sliderInner" class="weui-slider__inner">
+                            <div id="sliderTrack" style="width: 50%;" class="weui-slider__track"></div>
+                            <div id="sliderHandler" style="left: 50%;" class="weui-slider__handler"></div>
+                        </div>
+                    </div>
+                    <div id="sliderValue" class="weui-slider-box__value">{{getAudioNumber}}%</div>
+                </div>
+            </div>
+            <div style="text-align: center"><button type="button" v-on:click="setVolume('#volumesetting')">完成</button></div>
+        </div>
+    </div>
+
+    <!--include footer-->
+    <!--<script type='text/javascript' src='static/js/lib/vue-49b7247e5e.js' charset='utf-8'></script>-->
+<!--<script src="static/js/lib/jquery-weui-5db5df2198.min.js"></script>-->
+
+<script src="static/vue/vue.js"></script>
+<script src="static/jquery-weui/0.8.0/js/jquery-weui.min.js"></script>
+
+<script src="static/js/lib/mqttws31-86b9602d3f.js"></script>
+<script src="static/js/lib/mqttclient-2ce247b4f7.js"></script>
+<script src="static/js/lib/picker-1d66c080a1.min.js"></script>
+    <script src="static/js/lib/jquery-edd4e670ba.js"></script>
+    <script src="static/js/lib/zepto-350580c4e2.min.js"></script>
+    <script type='text/javascript' src='static/js/components/config_zhiban-9e0bc63bc7.js' charset='utf-8'></script>
+
+    <!--include 统计-->
+    <div class="rb-hide">
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274093527'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274093527%26online%3D1' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+
+</body>
+
+</html>

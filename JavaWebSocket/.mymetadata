@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="JavaWebSocket Maven Webapp"
+  id="myeclipse.1530182645360"
+  context-root="/JavaWebSocket"
+  j2ee-spec="6.0"
+  archive="JavaWebSocket Maven Webapp.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

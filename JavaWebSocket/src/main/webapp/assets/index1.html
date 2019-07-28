@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=640,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telphone=no, email=no" />
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="640">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="static/css/weui-69ad285e9a.min.css">
+    <link rel="stylesheet" href="static/css/jquery-weui-5e89bf3730.css">
+    <link rel="stylesheet" href="static/css/zb-1s-7d3af45a79.css" />
+    
+    <link rel="stylesheet" href="static/css/weui-69ad285e9a.min.css">
+    <link rel="stylesheet" href="static/css/jquery-weui-5e89bf3730.css">
+    <link rel="stylesheet" href="static/css/zb-1s-4b26b93aa5.css" />
+    <title></title>
+</head>
+
+<body>
+    <div class="index">
+
+        <section class="common-container play-bar-after search-bar-after">
+            <!--搜索模块start-->
+		
+                <div class="search-bar-new main-bc">
+                    <div class="content main-bc">
+                        <section class="icon" v-on:click.stop.prevent="search">
+                            <img src="static/img/icon/icon-search.jpg">
+                        </section>
+                        <section>
+                            <input v-model="input" @keyup.13="search" type="text" placeholder="搜索专辑、故事、歌曲" />
+                        </section>
+                    </div>
+                </div>
+            <!--搜索模块emd-->
+            <!--头部广告图-->
+            <img src="static/img/theme1/index1/search-background.png" style="width: 100%;margin-top: -1px">
+            <div class="top-banner">
+                <img src="static/img/theme1/index1/bannerxin.jpg">
+            </div>
+            <p v-if="loading" class="v-loading">加载中...</p>
+            <div class="article-list" v-if="loading==true" transition="show" v-cloak>
+                <div class="sub-title" style="margin: 0;">
+                    <div class="left">热门推荐</div>
+                    <div style="border-radius:10px;margin: 0 auto;width:2.2rem;height:8px;margin-top: 16px;background-color: rgb(72,164,189);">
+                   
+                    </div>
+                </div>
+            </div>
+            <div class="top-category clearfix" v-if="loading==true" transition="show" v-cloak>
+                <!--顶部菜单循环start-->
+                <section class="animate-box" v-for="(index, item) in list" v-if="index < 16">
+                    <a href="list.html?id={{item.id}}">
+                        <img :src=item.icon alt="">
+                    </a>
+                    <h5 v-text="item.name"></h5>
+                </section>
+            </div>
+
+            <div class="article-list" v-if="loading==true" v-cloak>
+                <div class="sub-title">
+                    <div class="left">精品推荐</div>
+                    <div style="border-radius:10px;margin: 0 auto;width:2.2rem;height:8px;margin-top: 16px;background-color: rgb(72,164,189);">
+                    </div>
+                </div>
+                <div class="list">
+                    <ul class="clearfix" v-for="n in 3">
+                        <!--内容循环start-->
+                        <li class="animate-box" v-for="i in 4" v-if="recommendations.length == 12">
+                            <a href="source.html?id={{recommendations[n*4+i].id}}">
+                                <img :src=recommendations[n*4+i].imgSmall alt="">
+                            </a>
+                            <h5 v-text="recommendations[n*4+i].name"></h5>
+                        </li>
+                        <!--内容循环end-->
+                    </ul>
+                </div>
+            </div>
+            <!--模块循环end-->
+            <!--底部播放栏start-->
+            <div class="play-bar" v-cloak>
+                <div v-if="deviceOnline"><img src="static/img/icon/playbar-logo-icon_on.png" alt=""></div>
+                <div v-if="!deviceOnline"><img src="static/img/icon/playbar-logo-icon_off.png" alt=""></div>
+                <p v-text="device_tips"></p>
+                <div v-if="isplay"><img src="static/img/theme1/index1/playbar-pause-icon.png" v-on:click.stop.prevent="pause()" alt=""></div>
+                <div v-if="!isplay"><img src="static/img/theme1/index1/playbar-play-icon.png" v-on:click.stop.prevent="resume()" alt=""></div>
+                <div><img src="static/img/theme1/index1/playbar-forward-icon.png" v-on:click.stop.prevent="forward()" alt=""></div>
+                <div class="sp"><img src="static/img/theme1/index1/playbar-list-icon.png" v-on:click.stop.prevent="showlist()" alt=""></div>
+            </div>
+            <!--底部播放栏end-->
+            <!--播放界面start-->
+            <div class="play-component" id="play-component" style="background: url(./static/img/theme1/single/background.png)">
+                <div class="close"><img src="static/img/theme1/index1/close-icon.png" alt=""></div>
+                <div class="btn-g">
+                    <div v-if="!islike"><img src="static/img/theme1/index1/btn-fav-icon.png" v-on:click.stop.prevent="addfav()" alt=""></div>
+                    <div v-if="islike"><img src="static/img/theme1/index1/btn-fav-on-icon.png" v-on:click.stop.prevent="dellike()" alt=""></div>
+                </div>
+                <div class="content">
+                    <audio src="" id="audio" style="display:none"></audio>
+                    <h3 class="title" v-if="!loading" v-text="music"></h3>
+                     <div class="player-animation" >
+                        <div v-bind:class="[isplay ? 'change-sm':'']" style="
+              background-color: #edf7fc;
+            height: 15rem;
+            width: 15rem;
+            overflow: hidden;
+            border-radius: 15rem;
+            background-image: url(static/img/theme1/single/player-sm.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            -webkit-background-size: contain;
+            background-size: 87%;
+
+"></div>
+                    </div>
+                    <h3 class="title" v-if="loading">读取机器人信息中.....</h3>
+
+                    <div class="seekbar-container" style="margin-top:65px">
+                        <span class="left" v-text="currentprogress">01：30</span>
+                        <div class="seekbar" id="sliderInner">
+                            <div class="process" id="sliderTrack">
+                                <img class="seek" id="sliderHandler" src="static/img/theme1/index1/seek-icon.png" alt="">
+                            </div>
+                        </div>
+                        <span class="right" v-text="sec">11：30</span>
+                    </div>
+                    <div class="play-g">
+                        <section v-if="!isloop"><img src="static/img/theme1/index1/player-repeatone.png" v-on:click.stop.prevent="repeatall()" alt="" style="width: 2rem"></section>
+                        <section v-if="isloop"><img src="static/img/theme1/index1/player-repeatall.png" v-on:click.stop.prevent="repeatone()" alt="" style="width: 2rem"></section>
+                        <section><img src="static/img/theme1/index1/player-backward.png" alt="" v-on:click.stop.prevent="backward()" style="width: 3rem"></section>
+                        <section v-if="isplay"><img src="static/img/theme1/index1/player-play.png" v-on:click.stop.prevent="pause()" alt="" style="width: 4rem"></section>
+                        <section v-if="!isplay"><img src="static/img/theme1/index1/player-pause.png" v-on:click.stop.prevent="resume()" alt="" style="width: 4rem"></section>
+                        <section><img src="static/img/theme1/index1/player-forward.png" v-on:click.stop.prevent="forward()" alt="" style="width: 3rem"></section>
+                        <section><img src="static/img/theme1/index1/player-list.png" v-on:click.stop.prevent="showlist()" alt="" style="width: 1.7rem"></section>
+                    </div>
+                    <div class="volume-container seekbar-container">
+                        <span class="left" id="minvolume"><img src="static/img/theme1/index1/volume1-icon.png" /></span>
+                        <div class="seekbar" id="sliderInnerVolume">
+                            <div class="process" id="sliderTrackVolume">
+                                <img class="seek" id="sliderHandlerVolume" src="static/img/theme1/index1/seek-icon.png" alt="">
+                            </div>
+                        </div>
+                        <span class="right" id="maxvolume"><img src="static/img/theme1/index1/volume0-icon.png" /></span>
+                    </div>
+                </div>
+            </div>
+            <!--播放界面end-->
+        </section>
+    </div>
+    <style>
+        body{text-align:center}
+        .item-more img {
+            transition: transform 0.5s;
+        }
+        
+        .item-more.active img {
+            transform: rotate(-90deg);
+        }
+        .player-animation{
+            border: 0px solid #ffffff;
+            width: 15rem;
+            height: 15rem;
+            padding-top: .7rem;
+            margin: 0 auto;
+
+        }
+
+        .mylove{
+            position: absolute;
+            right: 40px;
+            top: -60px;
+        }
+
+        .change-sm {
+            -webkit-animation: change 10s linear infinite;
+        }
+        @-webkit-keyframes change{
+            0%{
+                -webkit-transform:rotate(0deg);
+            }
+            50%{
+                -webkit-transform:rotate(180deg);
+            }
+            100%{
+                
+                -webkit-transform:rotate(360deg)
+            }
+        }
+
+
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="static/vue/1.0.26/vue.js"></script>
+    <script src="static/jquery-weui/0.8.0/js/jquery-weui.min.js"></script>
+    <script type='text/javascript' src='static/js/config/juli_config-60b59ec9b4.js' charset='utf-8'></script>
+    <script src="static/js/lib/mqttws31-778d4a5ecc.js"></script>
+    <script src="static/js/lib/mqttclient-12495ad1cf.js"></script>
+    <script src="static/js/modules/getopenid-6ab897a7f5.js"></script>
+    <script type='text/javascript' src='static/js/util/utils-b4e10213be.js' charset='utf-8'></script>
+    <script src="static/js/lib/scrollreveal-5deb4348d6.min.js"></script>
+    <script type='text/javascript' src='static/js/components/index-ac962fce4d.js'></script>
+    <script src="static/js/modules/wx-ed24beff0c.config.js"></script>
+    <script src="static/js/components/location-f290c76260.js"></script>
+	
+</body>
+
+</html>

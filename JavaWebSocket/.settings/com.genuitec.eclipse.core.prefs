@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=src/main/webapp/player.html,src/main/webapp/lewo.html,src/main/webapp/title.html,src/main/webapp/music.html,target/JavaWebSocket
+validator.Unchecked=

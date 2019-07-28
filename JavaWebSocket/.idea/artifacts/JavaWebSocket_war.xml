@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JavaWebSocket:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="JavaWebSocket.war">
+      <element id="artifact" artifact-name="JavaWebSocket:war exploded" />
+    </root>
+  </artifact>
+</component>

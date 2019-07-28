@@ -1,0 +1,305 @@
+﻿*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	font-family: "SimHei",黑体;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+}
+.container{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+} 
+.page0,.page1,.page2,.page3,.page4,.page5,.page6{
+	width: 100%;
+	height: 100%;
+	position: relative;	 
+}
+.page0,.page6{
+	background: -webkit-gradient(linear, left top, left bottom, from(#EBEBFF), color-stop(0.5, #EBEBFF), to(#7F7FFE));
+}
+.page0 header{
+	height: 60%;
+	position: relative;
+	margin: 0 auto;
+	border-top: 1px solid #c2c2dd;
+	border-bottom: 1px solid #c2c2dd;
+}
+.page0 .time{
+	position: relative;
+	margin: 30px auto;
+}
+.page0 header hgroup{
+	margin: 37px auto;
+}
+.page0 h1{
+	font-size: 50px
+}
+.page0 .sc{
+	font-size: 30px;
+}
+.page0 hgroup h2{
+	margin: 35px auto;
+	font-style: 35px;
+}
+
+.page0 footer{
+	height: 20%;
+	position: relative;
+}
+.page0 footer table{
+	width: 70%;
+	margin: 17px auto;	
+}
+.page0 table tr{
+	text-align: left;
+}
+.page0 footer .hdck{
+	display: block;
+	position: relative;
+	margin-left: 83%;
+	margin-top: -13%;
+	width: 12%;
+}
+.page1{
+	background: -webkit-gradient(linear, left top, left bottom, from(#EBF5EB), color-stop(0.5, #EBF5EB), to(#7FBF7F));
+}
+.page1 header, .page2 header, .page3 header, .page4 header, .page5 header, .page6 header{
+	position: relative;
+	width: 100%;
+	height: 6%;
+	border-bottom: 1px solid #000;
+
+}
+.page1 .img, .page2 .img, .page3 .img, .page4 .img, .page5 .img, .page6 .img{
+	height: 6%;
+	position: relative;
+	margin-top: -6%;
+	margin-left: -6%;
+}
+.page1 h3{
+	position: relative;
+	display: block;
+	margin-top: -7%;
+}
+.footer-1{
+	position: absolute;
+	margin-top: -1%;
+	margin-left: 13%;
+	width: 70%;
+	height: 43%;
+}
+.page1 .bot-1{
+	position: relative;
+	margin-top: 60%;
+	margin-left: 15px;
+	width: 93%;
+	letter-spacing: 2px;
+	line-height: 150%;
+	text-align: left;
+}
+.bot-1 h5{
+	text-align: right;
+	margin-right: 8px;
+}
+.page2{
+	background: -webkit-gradient(linear, left top, left bottom, from(#EBF7FB), color-stop(0.5, #EBF7FB), to(#7ECCFE));
+}
+.footer-2{
+	position: relative;
+	height: 53%;
+	width: 95%;
+	margin: 3% 3% 3% 0;
+}
+.page2 .bot-2{
+	position: absolute;
+	margin-top: -5%;
+	margin-left: 8%;
+	width: 90%;
+}
+.page3{
+	background: -webkit-gradient(linear, left top, left bottom, from(#F5EBF5), color-stop(0.5, #F5EBF5), to(#BF7FBF));
+}
+.footer-3,.footer-4,.footer-5{
+	margin-top: 3%;
+	width: 100%;
+	height: 50%;
+}
+.page3 .bot-3,.page4 .bot-4{
+	position: absolute;
+	margin-top: -3%;
+	width: 91%;
+	margin-left: 6%;
+	line-height: 117%;
+	letter-spacing: 1px;
+}
+.page3 h5{
+	position: relative;
+	font-weight: 400;
+}
+.page3 p,.page4 p{
+	position: relative;
+	margin-top: 3%;
+}
+.page4{
+	background: -webkit-gradient(linear, left top, left bottom, from(#F3EBFB), color-stop(0.5, #F3EBFB), to(#B27FE5));
+}
+.page4 p{
+	font-weight: 400;
+}
+.page4 .prompt{
+	font-weight: bold;
+	color: #0000FF;
+
+}
+.page5{
+	background: -webkit-gradient(linear, left top, left bottom, from(#EBF5EB), color-stop(0.5, #EBF5EB), to(#7FBF7F));
+}
+
+.footer-5{
+	margin-top: 7%;
+	margin-left: 3%;
+	font-size: 13px;
+	line-height: 150%;
+	letter-spacing: 1px;
+	text-align: left;
+}
+.footer-5{
+	margin-left: 5%;
+	width: 87%;
+	height: 70%;
+	position: relative;
+}
+.footer-5 h3{
+	position: relative;
+	margin-top: 3%;
+	text-align: center;
+	font-size: 21px;
+	font-weight: 400;
+}
+.footer-5 h5{
+	font-size: 17px;
+	position: relative;
+	margin-top: 7%;
+}
+.footer-5 p{
+	font-size: 15px;
+	position: relative;
+	margin-top: 2%;
+}
+.footer-5 div{
+	width: 100%;
+	height: 1px;
+	background: #000;
+	position: relative;
+	margin-top: 1%;
+}
+.footer-6{
+	position:relative;
+	width:94%;
+	height:35%;
+	margin-top:1%;
+	margin-left:3%;
+	font-size:13px;
+}
+.footer-6 table{
+	position:relative;
+	width:100%;
+	height:85%;
+}
+.footer-6 table caption{
+	margin-bottom: 3px;
+	font-size: 23px;
+}
+
+.page6 .bot-6{
+	position: relative;
+	width: 88%;
+	margin-left:6%; 
+	line-height: 1.2;
+	letter-spacing: 0.2em;
+	text-align: left;
+}
+.bot-6 h3{
+	text-align: center;
+	
+}
+.bot-6 p{
+	margin-top: 1%;
+}
+
+@media screen and (max-height: 480px) { 
+	.page1 .img, .page2 .img, .page3 .img, .page4 .img, .page5 .img, .page6 .img{
+		margin-top: -5%;
+	}
+	.footer-1{
+		margin-top: -5%;
+		margin-left: 18%;
+		width: 57%;
+		height: 47%;
+	}
+	.page1 .bot-1{
+		margin-top: 53%;
+		font-size: 15px;
+	}
+	.bot-1 div{
+		position: relative;
+		margin-top: -10px;
+	}
+	.footer-2{
+		height: 43%;
+		width: 87%;
+	}
+	.page2 .bot-2{
+		margin-top: -11%;
+	}
+	.page3 .bot-3,.page4 .bot-4{
+		margin-top: -7%;
+	}
+
+	.page6 .bot-6{
+		line-height: 1;
+	}
+}
+@media screen and (min-height: 570px){
+	.page1 h3{
+		margin-top: -5%;
+	}
+	.page1 .footer-1{
+		height: 40%;
+	}
+	.page1 .bot-1{
+		margin-top: 67%;
+		font-size: 17px;
+	}
+	.footer-2{
+		height: 43%;
+	}
+	.page2 .bot-2{
+		margin-top: -7%;
+		margin-left: 7%;
+		font-size:19px;
+	}
+	.page3 .bot-3,.page4 .bot-4{
+		margin-top: 3%;
+	}
+	.page3 h5{
+		font-size: 15px;
+	}
+	.page3 p ,.page4 p{
+		font-size: 17px;
+	}
+	.footer-6{
+		font-size: 15px;
+	}
+	.page6 .bot-6{
+		font-size: 19px;
+	}
+}
+
+

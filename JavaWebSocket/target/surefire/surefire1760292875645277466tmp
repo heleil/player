@@ -1,0 +1,29 @@
+#surefire
+#Wed Aug 01 14:23:00 CST 2018
+testClassesDirectory=C\:\\Users\\\u8D3A\u96F7\\Desktop\\JavaWebSocket\\target\\test-classes
+classPathUrl.4=C\:\\Users\\\u8D3A\u96F7\\.m2\\repository\\javax\\activation\\activation\\1.1\\activation-1.1.jar
+classPathUrl.3=C\:\\Users\\\u8D3A\u96F7\\.m2\\repository\\com\\sun\\mail\\javax.mail\\1.5.0\\javax.mail-1.5.0.jar
+classPathUrl.2=C\:\\Users\\\u8D3A\u96F7\\.m2\\repository\\javax\\javaee-api\\7.0\\javaee-api-7.0.jar
+useManifestOnlyJar=true
+classPathUrl.1=C\:\\Users\\\u8D3A\u96F7\\Desktop\\JavaWebSocket\\target\\classes
+reportsDirectory=C\:\\Users\\\u8D3A\u96F7\\Desktop\\JavaWebSocket\\target\\surefire-reports
+classPathUrl.0=C\:\\Users\\\u8D3A\u96F7\\Desktop\\JavaWebSocket\\target\\test-classes
+dirscanner.0=directoryScannerOptions
+providerConfiguration=org.apache.maven.surefire.junit.JUnit3Provider
+testSuiteDefinitionTestSourceDirectory=C\:\\Users\\\u8D3A\u96F7\\Desktop\\JavaWebSocket\\src\\test\\java
+surefireClassPathUrl.1=C\:\\Users\\\u8D3A\u96F7\\.m2\\repository\\org\\apache\\maven\\surefire\\surefire-api\\2.7.1\\surefire-api-2.7.1.jar
+surefireClassPathUrl.0=C\:\\Users\\\u8D3A\u96F7\\.m2\\repository\\org\\apache\\maven\\surefire\\surefire-junit3\\2.7.1\\surefire-junit3-2.7.1.jar
+report.2=org.apache.maven.surefire.report.XMLReporter
+useSystemClassLoader=true
+report.1=org.apache.maven.surefire.report.BriefFileReporter
+report.0=org.apache.maven.surefire.report.ForkingConsoleReporter
+excludes0=**/*$*
+isTrimStackTrace=true
+dirscanner.0.params=C\:\\Users\\\u8D3A\u96F7\\Desktop\\JavaWebSocket\\target\\test-classes|[**/Test*.java, **/*Test.java, **/*TestCase.java]|[**/*$*]
+enableAssertions=true
+includes2=**/*TestCase.java
+failIfNoTests=false
+includes1=**/*Test.java
+dirscanner.0.types=java.io.File|java.util.ArrayList|java.util.ArrayList
+includes0=**/Test*.java
+childDelegation=false
